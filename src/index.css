@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    --primary: 210 95% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 95% 45%;
+
+    --secondary: 210 30% 96%;
+    --secondary-foreground: 210 95% 50%;
+
+    --muted: 210 30% 96%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 210 95% 92%;
+    --accent-foreground: 210 95% 50%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 210 95% 50%;
+
+    --radius: 0.75rem;
+
+    /* Sagantan Blue Theme Variables */
+    --sagantan-blue: 210 95% 50%;
+    --sagantan-blue-light: 210 95% 92%;
+    --sagantan-blue-dark: 210 95% 40%;
+    --sagantan-white: 0 0% 100%;
+    --sagantan-gray-light: 210 30% 96%;
+    --sagantan-text: 210 20% 15%;
+    --sagantan-text-light: 210 20% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--sagantan-blue)), hsl(var(--sagantan-blue-dark)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sagantan-blue) / 0.95), hsl(var(--sagantan-blue-dark) / 0.95));
+    --gradient-light: linear-gradient(135deg, hsl(var(--sagantan-white)), hsl(var(--sagantan-gray-light)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--sagantan-blue) / 0.1);
+    --shadow-medium: 0 8px 30px hsl(var(--sagantan-blue) / 0.15);
+    --shadow-strong: 0 12px 40px hsl(var(--sagantan-blue) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Global styles */
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeIn 1s ease-out 0.3s both;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 1s ease-out 0.6s both;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 1s ease-out 0.9s both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 10s linear infinite;
+}
+
+/* Add after your existing styles */
+
+/* Remove top border line from notices section */
+.rounded-2xl {
+  border-top: none !important;
+}
+
+/* Custom scrolling for notices */
+@keyframes scroll-notice {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% + 28rem));
+  }
+}
+
+.notices-container {
+  animation: scroll-notice 50s linear infinite;
+  animation-delay: 2s;
+}
+
+/* Ensure notice items fit properly */
+.notice-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .notice-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Replace the existing notices animation styles with these */
+
+/* Ensure notice container has no visible overflow */
+.notices-container {
+  position: relative;
+}
+
+/* Ensure smooth scroll with better performance */
+.notices-container {
+  will-change: transform;
+}
+
+/* For mobile optimization */
+@media (max-width: 768px) {
+  .notices-container {
+    width: 100%;
+  }
+}
+
+/* Proper dialog positioning */
+[data-radix-dialog-content] {
+  position: fixed;
+  top: 25% !important; /* Move it to upper side of page */
+  left: 50% !important;
+  transform: translate(-50%, -25%) !important;
+  z-index: 100;
+}
