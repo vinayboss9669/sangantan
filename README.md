@@ -1,6 +1,6 @@
 # Welcome to your Lovable project
 
-## Project info
+## Project info for every one you want to study it and use this application beacuase i have nothing share another persen in this website
 
 **URL**: https://lovable.dev/projects/1408f019-836c-4111-a401-59ec5ea79abb
 
